@@ -1,12 +1,11 @@
-"use strict";
-let btnid = 0;
-let textbox = document.getElementById("panel");
-let str = textbox.value;
-let evalstr = textbox.value;
-let ansbox = document.getElementById("ans");
-let start;
-let end;
-let constants = {
+var btnid = 0;
+var textbox = document.getElementById("panel");
+var str = textbox.value;
+var evalstr = textbox.value;
+var ansbox = document.getElementById("ans");
+var start;
+var end;
+var constants = {
     "PI": 3.1415,
     "e": 2.7182
 };
@@ -16,9 +15,9 @@ function append(val) {
         start = textbox.selectionStart;
         end = textbox.selectionEnd;
         textbox.setSelectionRange(start, end);
-        const curvalue = textbox.value;
+        var curvalue = textbox.value;
         textbox.value += val;
-        const inserted = curvalue.substring(0, Number(start)) + val + curvalue.substring(Number(end));
+        var inserted = curvalue.substring(0, Number(start)) + val + curvalue.substring(Number(end));
         textbox.value = inserted;
         // Move the cursor to the end of the inserted value
         textbox.selectionStart = start + val.length;
@@ -37,13 +36,13 @@ function equal() {
     evalstr = replaceAllOccurrences(evalstr, 'sqrt', 'Math.sqrt');
     evalstr = replaceAllOccurrences(evalstr, 'e', '2.7182');
     evalstr = replaceAllOccurrences(evalstr, 'PI', '3.1415');
-    for (let a in constants) {
-        let tostr = String(constants[a]);
+    for (var a in constants) {
+        var tostr = String(constants[a]);
         evalstr = replaceAllOccurrences(evalstr, a, tostr);
     }
     console.log(evalstr, str);
     try {
-        let answer = eval(evalstr);
+        var answer = eval(evalstr);
         answer = Number(answer).toFixed(4);
         ansbox.value = answer;
     }
@@ -59,7 +58,7 @@ function clearscreen() {
     ansbox.value = '';
 }
 function delindex() {
-    let temp = str.slice(0, -1);
+    var temp = str.slice(0, -1);
     str = temp;
     textbox.value = str;
 }
@@ -84,7 +83,7 @@ function expo() {
     append("^");
 }
 function replaceAllOccurrences(inputString, wordToReplace, newWord) {
-    const regex = new RegExp('\\b' + wordToReplace + '\\b', 'gi');
+    var regex = new RegExp('\\b' + wordToReplace + '\\b', 'gi');
     return inputString.replace(regex, newWord);
 }
 function cale() {
@@ -96,12 +95,10 @@ function calpi() {
     append("PI");
 }
 function addconst() {
-    let name = prompt("enter variable name");
-    let val = prompt(`enter value of ${name} varibale`);
-    let value = parseInt(val !== null && val !== void 0 ? val : '0');
-    addNewButton(name, value);
+    var name = prompt("enter variable name");
+    addNewButton(name);
 }
-function addNewButton(btnname, btnvalue) {
+function addNewButton(btnname) {
     if (btnname === "") {
         alert("Invalid entry !! You did not enter the name");
     }
@@ -111,41 +108,48 @@ function addNewButton(btnname, btnvalue) {
             alert("Variable name already exists");
         }
         else {
-            constants[`${btnname}`] = btnvalue;
-            const newButton = document.createElement("button");
-            // Set the button's attributes and properties
-            newButton.textContent = btnname;
-            newButton.id = btnname;
-            newButton.className = "btn btn-primary";
-            newButton.style.margin = "7px";
-            // Append the button to the buttonContainer div
-            const buttonContainer = document.getElementById("con");
-            if (buttonContainer != null) {
-                newButton.onclick = function () {
-                    append(newButton.id);
-                    let conval;
-                    for (let i in constants) {
-                        if (i == newButton.id) {
-                            conval = constants[i];
+            var val = prompt("enter value of ".concat(btnname, " varibale"));
+            var value = parseInt(val !== null && val !== void 0 ? val : '0');
+            if (isNaN(value)) {
+                alert("Error cannot assign value to the variable");
+            }
+            else {
+                constants["".concat(btnname)] = value;
+                var newButton_1 = document.createElement("button");
+                // Set the button's attributes and properties
+                newButton_1.textContent = btnname;
+                newButton_1.id = btnname;
+                newButton_1.className = "btn btn-primary";
+                newButton_1.style.margin = "7px";
+                // Append the button to the buttonContainer div
+                var buttonContainer = document.getElementById("con");
+                if (buttonContainer != null) {
+                    newButton_1.onclick = function () {
+                        append(newButton_1.id);
+                        var conval;
+                        for (var i in constants) {
+                            if (i == newButton_1.id) {
+                                conval = constants[i];
+                            }
                         }
-                    }
-                    evalstr = evalstr + String(conval);
-                    textbox.value = str;
-                };
-                buttonContainer.appendChild(newButton);
+                        evalstr = evalstr + String(conval);
+                        textbox.value = str;
+                    };
+                    buttonContainer.appendChild(newButton_1);
+                }
             }
         }
         // Create a new button element
     }
 }
 function buttonClickHandler(event) {
-    const clickedButton = event.target;
-    const buttonId = clickedButton.id;
+    var clickedButton = event.target;
+    var buttonId = clickedButton.id;
     return buttonId;
 }
 function exists(key) {
-    let ret = false;
-    for (let a in constants) {
+    var ret = false;
+    for (var a in constants) {
         if (a === key) {
             ret = true;
             break;

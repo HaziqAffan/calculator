@@ -101,12 +101,11 @@ function replaceAllOccurrences(inputString: string, wordToReplace: string, newWo
   }
   function addconst(){
     let name=prompt("enter variable name")
-    let val=prompt(`enter value of ${name} varibale`)
-     let value=parseInt(val ?? '0')
-     addNewButton(name as string,value as number)
+    
+     addNewButton(name as string)
    
   }
-  function addNewButton(btnname:string,btnvalue:number)
+  function addNewButton(btnname:string)
    {
          if(btnname==="")
          {
@@ -121,39 +120,49 @@ function replaceAllOccurrences(inputString: string, wordToReplace: string, newWo
             }
             else
             {
-                constants[`${btnname}`]=btnvalue
-              const newButton: HTMLButtonElement = document.createElement("button");
-              // Set the button's attributes and properties
-             
-              newButton.textContent = btnname;
-              newButton.id=btnname;
-              newButton.className="btn btn-primary"
-              newButton.style.margin="7px"
-
-            // Append the button to the buttonContainer div
-            const buttonContainer: HTMLElement | null = document.getElementById("con");
-        
-            if (buttonContainer !=null)
-            {
-            
-                 newButton.onclick=function()
+                let val=prompt(`enter value of ${btnname} varibale`)
+                let value=parseInt(val ?? '0')
+                if(isNaN(value))
                 {
-               
-                    append(newButton.id)
-                    let conval;
-                    for(let i in constants)
-                    {
-                        if(i==newButton.id){
-                            conval=constants[i]
-                        }
-                    }
-                    evalstr=evalstr+String(conval)
-                    textbox.value=str
-                
+                    alert("Error cannot assign value to the variable")
                 }
-                 buttonContainer.appendChild(newButton);
+                else
+                {
+                    constants[`${btnname}`]=value
+                    const newButton: HTMLButtonElement = document.createElement("button");
+                    // Set the button's attributes and properties
+                   
+                    newButton.textContent = btnname;
+                    newButton.id=btnname;
+                    newButton.className="btn btn-primary"
+                    newButton.style.margin="7px"
+      
+                  // Append the button to the buttonContainer div
+                  const buttonContainer: HTMLElement | null = document.getElementById("con");
+              
+                  if (buttonContainer !=null)
+                  {
+                  
+                       newButton.onclick=function()
+                      {
+                     
+                          append(newButton.id)
+                          let conval;
+                          for(let i in constants)
+                          {
+                              if(i==newButton.id){
+                                  conval=constants[i]
+                              }
+                          }
+                          evalstr=evalstr+String(conval)
+                          textbox.value=str
+                      
+                      }
+                       buttonContainer.appendChild(newButton);
+                  }
+                }
+             
             }
-          }
                // Create a new button element
         
          }
