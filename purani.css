@@ -1,0 +1,138 @@
+ul{
+    display:flex;
+    
+}
+li{
+    list-style: none;
+    padding-left: 20px;
+    
+
+}
+.container-fluid{
+    background-image:linear-gradient(0deg,rgba(238, 144, 50, 0.9),rgba(232, 100, 157, 0.9)) , url(img/bg1.jpg);
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+.container-fluid2{
+    background-color: aliceblue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.container-fluid5{
+    background-image:linear-gradient(0deg,RGB(0,0,0,0.5),RGB(0,0,0,0.5)) , url(img/bg1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+.container-fluid6{
+    background-color: white;
+}
+
+.row{
+   padding:40px;
+   margin-left: 0px;
+   margin-right: 0px;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+p{
+    text-align: center;
+    color: white;
+}
+.btn{
+    background-color:blueviolet;
+    width:30vh;
+
+}
+h2{
+    color:blueviolet;
+}
+.work{
+    text-align: center;
+    font-size: 15px;
+}
+.col-6
+{
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+p2{
+    color:orange;
+}
+
+.nav-link{
+    color:black;
+}
+.nav-link:hover{
+    background:orangered
+}
+.active{
+    background-color: orange;
+}
+.activenew a{
+    color: orange;
+}
+.navigation{
+    padding: 0px;
+}
+.navtext{
+    font-weight: bold ;
+     font-size: 26px;
+}
+
+.aboutimg{
+    padding: 8px;
+}
+.white{
+    background-color: white;
+}
+.aceblue{
+    background-color: aliceblue;
+}
+.orange{
+    background-color:orange;
+}
+.black{
+    background-color: black;
+}
+.antiwhite{
+    background-color: antiquewhite;
+}
+.iconstyle{
+    font-size: 3rem;color: orange;
+}
+.tgrey{
+    color:grey;
+}
+.tblack
+{
+    color:black
+}
+.twhite a{
+    color: white;
+}
+.torange{
+    color: orange;
+}
+.fullwidth{
+    width:100%;
+}
+.iconstyle-p{
+    font-size: 3rem;color: pink;
+}
+.iconstyle-purple{
+    font-size: 1rem; color: purple;
+}
+.bold{
+    font-weight: bold
+}
+.smallfont{
+    font-size: small;
+}

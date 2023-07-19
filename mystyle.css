@@ -1,0 +1,14 @@
+.no{
+    margin: 0px;padding: 0px;
+}
+.full{
+    margin: 0px;padding: 0px;
+}
+.buttoncss{
+    background-color:rgb(23, 212, 205);
+    color: white;
+    font-size: larger;
+}
+.grey{
+    background-color: grey;
+}
